@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- HEAD -->
+	<%- include(`layouts/head`) %>
+
+	<body>
+		<!-- NAV -->
+		<% if(content !== "error"){ %>
+		<!-- NAV -->
+		<%- include(`layouts/nav`) %>
+		<!-- NAV -->
+		<% } %>
+
+		<!-- CONTENT -->
+		<%- include(`contents/${content}`) %>
+		<!-- FOOTER -->
+		<%- include(`layouts/footer`) %>
+	</body>
+</html>

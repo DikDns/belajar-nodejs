@@ -1,0 +1,82 @@
+<div class="container mt-3">
+	<div class="row">
+		<div class="col">
+			<h1>Detail Kontak</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<% if (contact) { %>
+			<div class="card" style="width: 18rem">
+				<% if (!contact.img) { %>
+				<img
+					src="/img/default-profile.png"
+					class="card-img-top"
+					alt="default profile user icon"
+				/>
+				<% } else { %>
+				<img
+					src="/img/<%= contact.img.nama %> "
+					class="card-img-top"
+					alt="<%= contact.img.nama %>"
+				/>
+				<% } %>
+				<div class="card-body">
+					<h5 class="card-title">
+						<!-- Contact Name -->
+						<%= contact.nama %>
+					</h5>
+					<ul class="list-group">
+						<li class="list-group-item fw-bold">
+							<!-- Contact Handphone No -->
+							<%= contact.noHp %>
+						</li>
+						<li class="list-group-item">
+							<!-- Contact Email -->
+							<% if (!contact.email) { %>
+							<span class="link-dark"> No Email </span>
+							<% } else { %>
+							<a
+								class="link-dark"
+								href="mailto:<%= contact.email %>"
+							>
+								<%= contact.email %>
+							</a>
+							<% } %>
+						</li>
+					</ul>
+					<div class="d-flex justify-content-between">
+						<a
+							type="button"
+							class="badge rounded btn btn-primary mt-3"
+							href="../contact/edit/<%= contact.nama %>"
+						>
+							<i class="fa-solid fa-pen-to-square"></i>
+							Edit
+						</a>
+						<a
+							type="button"
+							class="badge rounded btn btn-danger mt-3"
+							href="../contact/delete/<%= contact.nama %>"
+							onclick="return confirm('yakin?')"
+						>
+							<i class="fa-solid fa-trash"></i>
+							Hapus
+						</a>
+					</div>
+
+					<a href="/contact" class="card-link d-block mt-3">
+						&laquo; Kembali ke daftar kontak
+					</a>
+				</div>
+			</div>
+			<% } else { %>
+			<div class="alert alert-danger" role="alert">
+				Kontak tidak ditemukan!
+				<br />
+				<a href="/contact" class="link-primary">&laquo; Kembali</a>
+			</div>
+			<% } %>
+		</div>
+	</div>
+</div>

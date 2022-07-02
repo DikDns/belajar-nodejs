@@ -1,0 +1,93 @@
+<div class="container mt-3">
+	<div class="row pb-2">
+		<div class="col">
+			<h1>Edit Kontak <%= inputValues ? body.nama : '' %></h1>
+		</div>
+	</div>
+
+	<% if (errors.length !== 0) { %>
+	<div class="row">
+		<div class="col">
+			<div
+				class="alert alert-danger alert-dismissible fade show"
+				role="alert"
+			>
+				<hr />
+				<ul>
+					<% errors.forEach(error => { %>
+					<li>
+						<i class="fa-solid fa-circle-exclamation"></i>
+						<span class="fw-bold"><%= error.msg %></span>
+					</li>
+					<% }) %>
+				</ul>
+				<hr />
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="alert"
+					aria-label="Close"
+				></button>
+			</div>
+		</div>
+	</div>
+	<% } %>
+
+	<div class="row pb-2">
+		<div class="col">
+			<form method="post" action="/contact/update">
+				<input
+					type="text"
+					hidden
+					name="oldNama"
+					id="oldNama"
+					value="<%= body.oldNama || body.nama %>"
+				/>
+				<div class="mb-3">
+					<label for="inputNama" class="form-label">Nama</label>
+					<input
+						type="text"
+						class="form-control"
+						id="inputNama"
+						name="nama"
+						required
+						value="<%= inputValues ? body.nama : '' %>"
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="inputNoHp" class="form-label"
+						>No Handphone</label
+					>
+					<input
+						type="number"
+						class="form-control"
+						id="inputNoHp"
+						name="noHp"
+						required
+						value="<%= inputValues ? body.noHp : '' %>"
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="inputEmail" class="form-label">Email</label>
+					<input
+						type="email"
+						class="form-control"
+						id="inputEmail"
+						name="email"
+						value="<%= inputValues ? body.email : '' %>"
+					/>
+				</div>
+				<a
+					onclick="return confirm('yakin?')"
+					href="/contact"
+					type="button"
+					class="btn btn-secondary"
+					>Kembali</a
+				>
+				<button type="submit" class="btn btn-primary">
+					Simpan Perubahan
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
