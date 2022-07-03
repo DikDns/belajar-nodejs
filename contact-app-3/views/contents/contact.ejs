@@ -1,0 +1,77 @@
+<div class="container mt-3">
+	<div class="row">
+		<div class="col">
+			<h1>Contact</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<a href="/contact/add" type="button" class="btn btn-primary">
+				<i class="fa-solid fa-address-book"></i> Tambah Kontak
+			</a>
+		</div>
+	</div>
+
+	<% if (msg.length !== 0) { %>
+	<div class="row my-3">
+		<div class="col">
+			<div
+				class="alert alert-success alert-dismissible fade show"
+				role="alert"
+			>
+				<i class="fa-solid fa-circle-check"></i>
+				<%= msg %>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="alert"
+					aria-label="Close"
+				></button>
+			</div>
+		</div>
+	</div>
+	<% } %>
+
+	<div class="row">
+		<div class="col">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Nama</th>
+						<th scope="col">No Handphone</th>
+						<th scope="col">Aksi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% contacts.forEach((contact, i) => { %>
+					<tr>
+						<th scope="row">
+							<!-- Index Number -->
+							<%= i + 1 %>
+						</th>
+						<td>
+							<!-- Contact Name -->
+							<%= contact.nama %>
+						</td>
+						<td>
+							<!-- Contact Handphone No -->
+							<%= contact.noHp %>
+						</td>
+						<td>
+							<a
+								type="button"
+								class="badge rounded-pill btn btn-info"
+								href="contact/<%= contact.nama %>"
+							>
+								<i class="fa-solid fa-circle-info"></i>
+								Detail
+							</a>
+						</td>
+					</tr>
+					<% }) %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
